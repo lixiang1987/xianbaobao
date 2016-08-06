@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <% include ./partials/head %>
+    <link rel="stylesheet" type="text/css" media="all" href="css/daterangepicker.css" />
+    
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+     <![endif]-->
+</head>
+
+<body>
+    <header>
+        <% include ./partials/header %>
+    </header>
+
+    <!-- Page Content -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9">
+
+                <div class="thumbnail">
+                    <div class="caption-full">
+                        <h4 class="pull-right" id="price" val="24.99">24.99</h4>
+                        <h4><a href="#">Bose QC35</a>
+                        </h4>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-4 col-md-offset-2 demo">
+                <h4>租期：</h4>
+                <h4 id="rentdate"></h4>
+            </div>
+
+            <div class="col-md-6">
+              <h4>押金：</h4>
+              <h4>2000 （当面付）</h4>
+              <h4>租金：</h4>
+              <h4 id="total"></>
+            </div>
+            <div class="col-md-9">
+              <a class="btn btn-primary btn-block">付款</a>
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
+
+    <div class="container">
+
+        <hr>
+
+        <!-- Footer -->
+        <footer>
+            <% include ./partials/footer %>
+        </footer>
+
+    </div>
+    
+    <!-- /.container -->
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/moment.js"></script>
+    <script type="text/javascript" src="js/daterangepicker.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function() {
+        var start = new Date();
+        var end = new Date()
+        end.setDate(start.getDate()+1);
+        $('#rentdate').text(start.toLocaleDateString() + ' to ' + end.toLocaleDateString());
+        $('#total').text(24.99);
+      });
+    </script>
+</body>
+
+</html>
