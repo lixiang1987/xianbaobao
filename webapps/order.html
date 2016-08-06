@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <% include ./partials/head %>
+    <link rel="stylesheet" type="text/css" media="all" href="css/daterangepicker.css" />
+    
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+     <![endif]-->
+</head>
+
+<body>
+    <header>
+        <% include ./partials/header %>
+    </header>
+
+    <!-- Page Content -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9">
+
+                <div class="thumbnail">
+                    <div class="caption-full">
+                        <h4 class="pull-right" id="price" val="24.99">24.99</h4>
+                        <h4><a href="#">Bose QC35</a>
+                        </h4>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-4 col-md-offset-2 demo">
+                <h4>选择租期</h4>
+                <input type="text" id="config-demo" class="form-control">
+                <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
+            </div>
+
+            <div class="col-md-6">
+              <h4>总价</h4>
+              <h4 id="total">24.99</>
+            </div>
+            <div class="col-md-9">
+              <a class="btn btn-primary btn-block" href="orderinfo">我要租</a>
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
+
+    <div class="container">
+
+        <hr>
+
+        <!-- Footer -->
+        <footer>
+            <% include ./partials/footer %>
+        </footer>
+
+    </div>
+    
+    <!-- /.container -->
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/moment.js"></script>
+    <script type="text/javascript" src="js/daterangepicker.js"></script>
+    <style type="text/css">
+      .demo { position: relative; }
+      .demo i {
+        position: absolute; bottom: 10px; right: 24px; top: auto; cursor: pointer;
+      }
+      </style>
+
+
+      <script type="text/javascript">
+      $(document).ready(function() {
+
+        $('#config-text').keyup(function() {
+          eval($(this).val());
+        });
+        
+        $('.configurator input, .configurator select').change(function() {
+          updateConfig();
+        });
+
+        $('.demo i').click(function() {
+          $(this).parent().find('input').click();
+        });
+
+        $('#startDate').daterangepicker({
+          singleDatePicker: true,
+          startDate: moment().subtract(6, 'days')
+        });
+
+        $('#endDate').daterangepicker({
+          singleDatePicker: true,
+          startDate: moment()
+        });
+
+        updateConfig();
+
+        function updateConfig() {
+          var options = {};
+          options.autoApply = true;
+          options.minDate = new Date();
+          $('#rtl-wrap').hide();
+
+          $('#config-demo').daterangepicker(options, function(start, end, label) {
+              console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');
+              //$('#config-text').val(start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+              //$('#config-text').val((Math.floor((end-start)/(24*3600*1000))));
+              $('#total').text(24.99 * (Math.floor((end-start)/(24*3600*1000))));
+              console.log(eval($('#price').val()));
+          });
+        }
+
+      });
+      </script>
+
+</body>
+
+</html>

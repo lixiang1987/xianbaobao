@@ -42,6 +42,18 @@ app.get('/item', function (req, res) {
 app.get('/items', function (req, res) {
   res.render('items');
 });
+app.get('/itemshistory', function (req, res) {
+  res.render('itemshistory');
+});
+app.get('/order', function (req, res) {
+  res.render('order');
+});
+app.get('/orderconfirm', function (req, res) {
+  res.render('orderconfirm');
+});
+app.get('/orderinfo', function (req, res) {
+  res.render('orderinfo');
+});
 
 app.use('/', user);
 app.use('/api/login', require('./api/login'));

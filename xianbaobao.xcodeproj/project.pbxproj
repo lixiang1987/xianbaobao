@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXFileReference section */
+		052883951D523938008370DF /* order.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = order.html; sourceTree = "<group>"; };
+		052883991D55C8DE008370DF /* orderconfirm.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = orderconfirm.html; sourceTree = "<group>"; };
+		0528839A1D55CE74008370DF /* orderinfo.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = orderinfo.html; path = webapps/orderinfo.html; sourceTree = SOURCE_ROOT; };
+		0528839B1D55D3FE008370DF /* itemshistory.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = itemshistory.html; sourceTree = "<group>"; };
 		C9218C8B1D4A51CC00C4554C /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		C9C7F0431D50DBCA00E371BB /* item.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = item.js; sourceTree = "<group>"; };
 		C9C7F0441D50DBCA00E371BB /* login.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = login.js; sourceTree = "<group>"; };
@@ -502,6 +506,15 @@
 		C9C7F04A1D50DBCA00E371BB /* webapps */ = {
 			isa = PBXGroup;
 			children = (
+				C9C7F06F1D50DBCA00E371BB /* index.html */,
+				C9C7F0701D50DBCA00E371BB /* item.html */,
+				C9C7F0711D50DBCA00E371BB /* items.html */,
+				0528839B1D55D3FE008370DF /* itemshistory.html */,
+				C9C7F0AA1D50DBCA00E371BB /* mine.html */,
+				C9C7F0AB1D50DBCA00E371BB /* new.html */,
+				052883991D55C8DE008370DF /* orderconfirm.html */,
+				0528839A1D55CE74008370DF /* orderinfo.html */,
+				052883951D523938008370DF /* order.html */,
 				C9C7F04B1D50DBCA00E371BB /* about.html */,
 				C9C7F04C1D50DBCA00E371BB /* apps */,
 				C9C7F04E1D50DBCA00E371BB /* contact.html */,
@@ -509,13 +522,8 @@
 				C9C7F0571D50DBCA00E371BB /* fonts */,
 				C9C7F05D1D50DBCA00E371BB /* gulpfile.js */,
 				C9C7F05E1D50DBCA00E371BB /* img */,
-				C9C7F06F1D50DBCA00E371BB /* index.html */,
-				C9C7F0701D50DBCA00E371BB /* item.html */,
-				C9C7F0711D50DBCA00E371BB /* items.html */,
 				C9C7F0721D50DBCA00E371BB /* js */,
 				C9C7F0A61D50DBCA00E371BB /* less */,
-				C9C7F0AA1D50DBCA00E371BB /* mine.html */,
-				C9C7F0AB1D50DBCA00E371BB /* new.html */,
 				C9C7F0AC1D50DBCA00E371BB /* node_modules */,
 				C9C7F2311D50DBCA00E371BB /* package.json */,
 				C9C7F2321D50DBCA00E371BB /* partials */,
