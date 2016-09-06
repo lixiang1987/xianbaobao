@@ -18,8 +18,6 @@ app.use(session({
   saveUninitialized: true
 }));
 
-var user = require('./app/user');
-
 app.use(logger('dev'));
 
 // view engine setup
@@ -55,7 +53,7 @@ app.get('/orderinfo', function (req, res) {
   res.render('orderinfo');
 });
 
-app.use('/', user);
+app.use('/', require('./app/user'));
 app.use('/api/login', require('./api/login'));
 app.use('/api/item', require('./api/item'));
 
