@@ -5,7 +5,7 @@
     <% include ./partials/head %>
 </head>
 
-<body>
+<body ng-app="itemApp" ng-controller="ItemController">
     <header>
         <% include ./partials/header %>
     </header>
@@ -14,23 +14,13 @@
     <div class="container">
 
         <div class="row">
-            <!--
-            <div class="col-md-3">
-                <p class="lead">Shop Name</p>
-                <div class="list-group">
-                    <a href="#" class="list-group-item active">Category 1</a>
-                    <a href="#" class="list-group-item">Category 2</a>
-                    <a href="#" class="list-group-item">Category 3</a>
-                </div>
-            </div>
-             -->
 
             <div class="col-md-9">
 
                 <div class="thumbnail">
                     <img class="img-responsive" src="img/portfolio/fullsize/1.jpg" alt="">
                     <div class="caption-full">
-                        <h4 class="pull-right">$24.99</h4>
+                        <h4 class="pull-right">{{item.Price}}</h4>
                         <h4><a href="#">Bose QC35</a>
                         </h4>
                         <p>如何用数码设备换来片刻的宁静,就有了下面这篇Bose QC35降噪蓝牙耳机体验。 外观绝不出彩,但可能是佩戴最舒适的耳机之一Bose QC35</p>
@@ -132,6 +122,8 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
+
+    <script src="apps/item.js"></script>
 
 </body>
 
