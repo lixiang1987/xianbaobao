@@ -23,7 +23,7 @@ router.get('/latest', function (req, res) {
   res.json(router.get_latest_items());
 })
 
-router.get('/getItem', function (req, res) {
+router.get('/getItem/:itemId', function (req, res) {
   res.setHeader('content-type', 'application/json');
   res.json(router.get_item(req.params.itemId));
 })

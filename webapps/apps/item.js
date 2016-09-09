@@ -1,40 +1,24 @@
 angular.module('itemApp', ['ngRoute'])
-  .config(function ($routeProvider) {
-    $routeProvider.otherwise({ redirectTo: '/' });
+  .config(function ($routeProvider) {  
+    $routeProvider.when('/itemId/:itemId', {                            
+        templateUrl: 'item.html',
+        controller: 'ItemController'
+    });
+    $routeProvider.otherwise({ redirectTo: '/item' });
   })
-  .controller('ItemController', function ($scope, $location, ItemService) {
-
-    var self = this;
-    var itemId = null; // optional declaration!
-    $scope.item = null;
-    bind("itemId");
-
-    function bind(valueName) {
-
-        // Controller to URL
-      $scope.$watch(function() { return self[valueName] }, function (newVal) {
-          console.log("Property changed!");
-          $location.search(valueName, newVal);
+  .controller('ItemController', function ($scope, $routeParams, $http, ItemService) {
+    alert($routeParams.itemId);
+    $http.get('/api/item/getItem/'+$routeParams.itemId)
+      .success(function (response) {
+          alert(response);
+          $scope.item = response;
       });
 
-      // URL to controller
-      $scope.$on('$locationChangeSuccess', function(event) {
-          console.log("URL changed!");
-          self[valueName] = $location.search()[valueName];
-          ItemService.get(self["itemId"], function (data) {
-          $scope.item = data;
-        });
-      });
-    }
-    
-    $scope.submit = function () {
-      ItemService.create($scope.description, $scope.rent);
-    }
   })
   .factory('ItemService', function ($http) {
     return {
       get: function (itemId, callback) {
-        $http.get('/api/item/getItem', {params: { itemId: itemId }}).success(function (data) {
+        $http.get('/api/item/getItem/'+itemId).success(function (data) {
           callback(data);
         });
       }
