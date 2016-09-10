@@ -1,30 +1,17 @@
-angular.module('itemApp', ['ngRoute'])
-  .config(function ($routeProvider) {  
-    $routeProvider.when('/itemId/:itemId', {                            
-        templateUrl: 'item.html',
-        controller: 'ItemController'
-    });
-    $routeProvider.otherwise({ redirectTo: '/item' });
+var app = angular.module('itemApp', ['ngRoute']);
+
+app.config(function ($routeProvider) {  
+    $routeProvider.otherwise({ redirectTo: '/' });
   })
-  .controller('ItemController', function ($scope, $routeParams, $http, ItemService) {
-    alert($routeParams.itemId);
-    $http.get('/api/item/getItem/'+$routeParams.itemId)
+  .controller('ItemController', ['$scope', '$location', '$http', function ($scope, $location,$http, ItemService) {
+    var itemId = $location.path();
+    $http.get('/api/item/getItem'+itemId)
       .success(function (response) {
-          alert(response);
           $scope.item = response;
       });
 
-  })
-  .factory('ItemService', function ($http) {
-    return {
-      get: function (itemId, callback) {
-        $http.get('/api/item/getItem/'+itemId).success(function (data) {
-          callback(data);
-        });
-      }
-    }
-  })
-  .service('ItemService', function ($http) {
+  }]);
+app.service('ItemService', function ($http) {
     this.create = function (description, rent) {
       var req = {
         method: 'POST',
