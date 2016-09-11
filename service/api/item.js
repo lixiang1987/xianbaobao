@@ -28,7 +28,59 @@ router.get('/getItem/:itemId', function (req, res) {
   res.json(router.get_item(req.params.itemId));
 })
 
+router.get('/getComments/:itemId', function(req, res){
+  res.setHeader('content-type', 'application/json');
+  res.json(router.get_comments(req.params.itemId));
+})
+
 // utilities
+
+router.get_comments = function(itemId) {
+  if(itemId === "1000"){
+    return [
+      {
+        "PubTime" : new Date(),
+        "UserId" : "Roy",
+        "ToUserId": "Shane",
+        "Content": "降噪效果超级棒！"
+      },
+      {
+        "PubTime" : new Date(),
+        "UserId" : "膜",
+        "ToUserId": "Shabi",
+        "Content": "希望下一次我也能租到！"
+      },
+      {
+        "PubTime" : new Date(),
+        "UserId" : "刘涛",
+        "ToUserId": "Shane",
+        "Content": "物主很好，下次再来。"
+      }
+    ];
+  }
+  else{
+    return [
+      {
+        "PubTime" : new Date(),
+        "UserId" : "刘亦菲",
+        "ToUserId": "Shane",
+        "Content": "五星好评！"
+      },
+      {
+        "PubTime" : new Date(),
+        "UserId" : "杨幂",
+        "ToUserId": "Shabi",
+        "Content": "还行！"
+      },
+      {
+        "PubTime" : new Date(),
+        "UserId" : "刘涛",
+        "ToUserId": "Shane",
+        "Content": "非常不错。"
+      }
+    ];
+  }
+}
 
 router.get_item = function(itemId) {
   if(itemId === "1000"){
@@ -127,5 +179,18 @@ router.get_latest_items = function () {
       "status": "OnShelf"
     }];
 }
+
+router.get_order = function (orderId){
+  return {
+    "OrderTime":new Data(),
+    "ItemId":"1000",
+    "RenterId":"1000",
+    "StartDate":new Date(),
+    "EndDate":new Date(),
+    "Deposit":100,
+    "Price":24.99,
+    "Status":"Confirmed"
+  };
+} 
 
 module.exports = router;

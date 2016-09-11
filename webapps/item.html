@@ -26,7 +26,7 @@
                         <p>{{item.Description}}</p>
                     </div>
                     <div class="ratings">
-                        <p class="pull-right">3 条评论</p>
+                        <p class="pull-right">{{comments.length}} 条评论</p>
                         <p>
                             <span class="glyphicon glyphicon-star"></span>
                             <span class="glyphicon glyphicon-star"></span>
@@ -48,43 +48,12 @@
                     <hr>
 
                     <div class="row">
-                        <div class="col-md-12">
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star-empty"></span> 匿名
-                            <span class="pull-right">10 天前</span>
-                            <p>降噪效果超级棒，下次再租！</p>
+                        <div ng-repeat = "comment in comments" class="col-md-12">
+                            {{comment.UserId}}
+                            <span class="pull-right">{{comment.PubTime}}</span>
+                            <p>{{comment.Content}}</p>
                         </div>
-                    </div>
-
-                    <hr>
-
-                    <div class="row">
-                        <div class="col-md-12">
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star-empty"></span> 匿名
-                            <span class="pull-right">12 天前</span>
-                            <p>下一次希望能轮到我。</p>
-                        </div>
-                    </div>
-
-                    <hr>
-
-                    <div class="row">
-                        <div class="col-md-12">
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star-empty"></span> 匿名
-                            <span class="pull-right">15 天前</span>
-                            <p>物主人很好，跟我交流了很多关于hifi的心得，下次再来。</p>
-                        </div>
+                        <hr>
                     </div>
 
                     <h4>留言：</h4>

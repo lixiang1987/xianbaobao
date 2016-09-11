@@ -9,6 +9,10 @@ app.config(function ($routeProvider) {
       .success(function (response) {
           $scope.item = response;
       });
+    $http.get('/api/item/getComments'+itemId)
+      .success(function (response) {
+          $scope.comments = response;
+      });
 
   }]);
 app.service('ItemService', function ($http) {
