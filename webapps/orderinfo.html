@@ -12,7 +12,7 @@
      <![endif]-->
 </head>
 
-<body>
+<body ng-app="orderApp" ng-controller="OrderController">
     <header>
         <% include ./partials/header %>
     </header>
@@ -25,10 +25,10 @@
                 <div class="thumbnail">
                     <div class="caption-full">
                         <h4 class="pull-right" id="price" val="24.99">24.99</h4>
-                        <h4><a href="#">Bose QC35</a>
+                        <h4><a href="#">{{order.ItemId}}</a>
                     </div>
                     <div class="caption-full">
-                        <h4 class="pull-right">roy</h4>
+                        <h4 class="pull-right">{{order.RenterId}}</h4>
                         <h4><a href="#">出借人昵称</a></h4>
                     </div>
                 </div>
@@ -38,9 +38,9 @@
                 <div class="thumbnail">
                     <div class="caption-full">
                         <h4>租借人昵称：</h4>
-                        <h4>tyyt</h4>
+                        <h4>{{order.RenterId}}</h4>
                         <h4>成交时间：</h4>
-                        <h4>2016/8/6</h4>
+                        <h4>{{order.OrderTime}}</h4>
                         <h4>租期：</h4>
                         <h4 id="rentdate"></h4>
                         <h4>押金：</h4>
@@ -88,6 +88,7 @@
         //$('#btnpay').disabled="disabled";
       });
     </script>
+    <script src="apps/order.js"></script>
 </body>
 
 </html>

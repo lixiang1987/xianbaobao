@@ -13,7 +13,10 @@ app.config(function ($routeProvider) {
       .success(function (response) {
           $scope.comments = response;
       });
-
+  }])
+  .controller('NewItemController', ['$scope', '$location', '$http', function ($scope, $location,$http, ItemService) {
+    var itemId = $location.path();
+    
   }]);
 app.service('ItemService', function ($http) {
     this.create = function (description, rent) {

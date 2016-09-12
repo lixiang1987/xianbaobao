@@ -3,19 +3,17 @@
 
 <head>
     <% include ./partials/head %>
-        <script type="text/javascript" src="js/jquery.js"></script>
-        <script type="text/javascript" src="js/bootstrap.min.js"></script>
         <link href="css/fileinput.css" media="all" rel="stylesheet" type="text/css" />
-        <script src="js/fileinput.js" type="text/javascript"></script>
+        
 </head>
 
-<body ng-app="app">
+<body ng-app="itemApp">
     <header>
         <% include ./partials/header %>
     </header>
 
     <!-- Page Content -->
-    <div class="container" ng-controller="ItemController">
+    <div class="container" ng-controller="NewItemController">
         <div class="container kv-main">
 
             <div>
@@ -52,15 +50,12 @@
     </div>
     <!-- /.container -->
 
-    <script src="js/angular.1.5.7/angular.min.js"></script>
-    <script src="js/angular.1.5.7/angular-route.min.js"></script>
-    <script src="js/angular.1.5.7/angular-animate.min.js"></script>
-
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/fileinput.js"></script>
 
     <script src="apps/item.js"></script>
 </body>

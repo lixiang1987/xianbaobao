@@ -80,31 +80,46 @@ router.get_access_token = function (openid, callback) {
   });
 };
 
+//mock userinfo
 router.get_user_info = function (req, res, callback) {
-  if (!req.session.openid) {
-    console.log(req.originalUrl);
-    req.session.lastUrl = req.originalUrl;
-    res.redirect('/api/login/authorize');
-  } else {
-    var openid = req.session.openid;
-    this.get_access_token(openid, function (access_token) {
-      if (access_token) {
-        var template = 'https://api.weixin.qq.com/sns/userinfo?access_token=%s&openid=%s&lang=zh_CN';
-        var url = util.format(template, access_token, openid);
-        https.get(url, (res1) => {
-          res1.on('data', (d) => {
-            var data = JSON.parse(d);
-            callback(data);
-          });
-        }).on('error', (e) => {
-          callback(e);
-        });
-      } else {
-        req.session.lastUrl = req.originalUrl;
-        res.redirect('/api/login/authorize');
-      }
-    });
-  }
-};
+  var userinfo = {
+    "openid" : "abcdefg",
+    "nickname" : "Shane",
+    "sex" : "M",
+    "language" : "Chinese",
+    "city" : "Shanghai",
+    "province" : "Shanghai",
+    "country" : "China",
+    "headimgurl" : ""
+  };
+  callback(userinfo);
+}
+
+// router.get_user_info = function (req, res, callback) {
+//   if (!req.session.openid) {
+//     console.log(req.originalUrl);
+//     req.session.lastUrl = req.originalUrl;
+//     res.redirect('/api/login/authorize');
+//   } else {
+//     var openid = req.session.openid;
+//     this.get_access_token(openid, function (access_token) {
+//       if (access_token) {
+//         var template = 'https://api.weixin.qq.com/sns/userinfo?access_token=%s&openid=%s&lang=zh_CN';
+//         var url = util.format(template, access_token, openid);
+//         https.get(url, (res1) => {
+//           res1.on('data', (d) => {
+//             var data = JSON.parse(d);
+//             callback(data);
+//           });
+//         }).on('error', (e) => {
+//           callback(e);
+//         });
+//       } else {
+//         req.session.lastUrl = req.originalUrl;
+//         res.redirect('/api/login/authorize');
+//       }
+//     });
+//   }
+// };
 
 module.exports = router;
