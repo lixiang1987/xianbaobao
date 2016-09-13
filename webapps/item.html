@@ -59,9 +59,9 @@
                     <h4>留言：</h4>
                     <form role="form">
                         <div class="form-group">
-                            <textarea class="form-control" rows="3"></textarea>
+                            <textarea class="form-control" rows="3" ng-model="commentContent"></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary">提交</button>
+                        <button type="submit" class="btn btn-primary" ng-href='#comment' ng-click='comment()'>提交</button>
                     </form>
 
                 </div>

@@ -2,6 +2,7 @@ var express = require('express');
 var redis = require('redis'), client = redis.createClient();
 var router = express.Router();
 var bodyParser = require('body-parser');
+var commentIDIndex=100;
 
 router.use(bodyParser.json());
 
@@ -37,6 +38,26 @@ router.get('/getOrder/:orderId', function(req, res){
   res.setHeader('content-type', 'application/json');
   res.json(router.get_order(req.params.orderId));
 })
+
+router.post('/newComment', function (req, res) {
+  var pubTime = req.body.PubTime
+  var itemId = req.body.ItemId;
+  var content = req.body.Content;
+  if (req.body) {
+    console.log(req.body);
+  }
+  commentIDIndex++;
+  var newCommentID = commentIDIndex;
+  commentsDict[newCommentID] = {
+    "PubTime" : pubTime,
+    "UserId" : "膜",
+    "ToUserId": "Shabi",
+    "Content": content
+  };
+  itemDict[itemId].Comments.push(newCommentID);
+  res.setHeader('content-type', 'application/json');
+  res.json({ "success": true, "itemId":itemId });
+});
 
 // utilities
 

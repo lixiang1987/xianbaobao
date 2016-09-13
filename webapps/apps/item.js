@@ -4,15 +4,43 @@ app.config(function ($routeProvider) {
     $routeProvider.otherwise({ redirectTo: '/' });
   })
   .controller('ItemController', ['$scope', '$location', '$http', function ($scope, $location,$http, ItemService) {
-    var itemId = $location.path();
-    $http.get('/api/item/getItem'+itemId)
+    var itemId = $location.path().split('/')[1];
+    $http.get('/api/item/getItem/'+itemId)
       .success(function (response) {
           $scope.item = response;
       });
-    $http.get('/api/item/getComments'+itemId)
+    $http.get('/api/item/getComments/'+itemId)
       .success(function (response) {
           $scope.comments = response;
       });
+    $scope.comment = function(){
+      var pubTime = new Date();
+      var req = {
+        method: 'POST',
+        url: '/api/item/newComment',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        data: {
+          'PubTime': pubTime,
+          'ItemId': itemId,
+          'Content': $scope.commentContent
+        }
+      }
+
+      $http(req).then(function () {
+        $scope.comments.push({
+          "PubTime" : pubTime,
+          "UserId" : "膜",
+          "ToUserId": "Shabi",
+          "Content": $scope.commentContent
+        });
+        $scope.commentContent="";
+      }, function () {
+        alert("failed");
+      });
+
+    }
   }])
   .controller('NewItemController', ['$scope', '$location', '$http', function ($scope, $location,$http, ItemService) {
     var itemId = $location.path();
